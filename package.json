@@ -1,0 +1,32 @@
+{
+  "name": "lynking-node",
+  "version": "1.0.0",
+  "description": "server side for lynking app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hectorguo/lynking-node.git"
+  },
+  "keywords": [
+    "express",
+    "lynking",
+    "mongoose"
+  ],
+  "author": "hectorguo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hectorguo/lynking-node/issues"
+  },
+  "homepage": "https://github.com/hectorguo/lynking-node#readme",
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "jsonwebtoken": "^7.1.9",
+    "mongoose": "^4.6.5",
+    "mongoose-hidden": "^0.6.4"
+  }
+}
