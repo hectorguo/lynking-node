@@ -23,27 +23,44 @@ const router = express.Router();              // get an instance of the express 
 const utils = require('./utils');
 
 const session = require('./routes/session');
+const user = require('./routes/user');
+const location = require('./routes/location');
+const match = require('./routes/match');
 
+// Enable CORS
+app.use(function(req, res, next) {
+  // whiteList
+  if(conf.corsWhitelist.indexOf(req.headers.origin) > -1) {
+    res.header("Access-Control-Allow-Origin", req.headers.origin);
+  }
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
+app.use('/api', user);
+app.use('/api', location);
+app.use('/api', match);
 // setup and sessions router do not need to verify token
-app.use('/api', session);
+// app.use('/api', session);
 
 // Authentication
-app.use((req, res, next) => {
-    const token = req.body.token || req.query.token || req.headers['x-access-token'];
+// app.use((req, res, next) => {
+//     const token = req.body.token || req.query.token || req.headers['x-access-token'];
 
-    if(!token) { 
-        utils.reportError(403, 1011, 'No token provided', res);
-        return;
-    }
+//     if(!token) { 
+//         utils.reportError(403, 1011, 'No token provided', res);
+//         return;
+//     }
 
-    utils.verifyUser(token)
-        .then(() => {
-            next();
-        })
-        .catch((err) => {
-            utils.reportError(403, 1011, 'Failed to authenticate token', res);
-        });
-});
+//     utils.verifyUser(token)
+//         .then(() => {
+//             next();
+//         })
+//         .catch((err) => {
+//             utils.reportError(403, 1011, 'Failed to authenticate token', res);
+//         });
+// });
 
 // router for entities
 // app.use('/api', location);
