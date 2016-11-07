@@ -2,5 +2,5 @@
 module.exports = {
     secret: 'lynking-secret',
     database: 'mongodb://hector:guo@ds041566.mlab.com:41566/hectorguo',
-    corsWhitelist: ['null','http://4113studio.com','localhost']
+    corsWhitelist: ['null','https://4113studio.com','http://4113studio.com','https://localhost','http://localhost']
 }
