@@ -4,6 +4,7 @@ const express = require('express');        // call express
 const app = express();                 // define our app using express
 const bodyParser = require('body-parser');
 
+const cors = require('cors')
 const mongoose = require('mongoose');
 const conf = require('./config');
 const port = process.env.PORT || 8080;        // set our port
@@ -26,6 +27,16 @@ const session = require('./routes/session');
 const user = require('./routes/user');
 const location = require('./routes/location');
 const match = require('./routes/match');
+
+
+const corsConfig = {
+  origin: function(origin, callback){
+    const originIsWhitelisted = !origin || conf.corsWhitelist.indexOf(origin) !== -1;
+    callback(originIsWhitelisted ? null : 'Bad Request', originIsWhitelisted);
+  }
+}
+
+app.use(cors(corsConfig));
 
 // Enable CORS
 app.use(function(req, res, next) {
