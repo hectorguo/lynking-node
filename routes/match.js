@@ -21,7 +21,7 @@ const userHandle = new ModelHandle(User, 'User');
 router.route('/user/:name/match')
     .get((req, res) => {
         const limitCount = req.query.count && req.query.count < 20 ? req.query.count : 20;
-        const maxDistance = req.query.distance ? req.query.distance : 1; // unit km
+        const maxDistance = req.query.distance ? req.query.distance : 1000; // unit meters
 
         User
         .findOne({ name: req.params.name })
@@ -38,7 +38,7 @@ router.route('/user/:name/match')
 
             User
             .find({
-                location: {$near: user.location, $maxDistance: maxDistance/111.12}, // distance 1km square
+                location: {$near: user.location, $maxDistance: maxDistance/1000/111.12}, // distance 1km square
                 name: {$ne: user.name}
             })
             // .findNearby()
@@ -48,6 +48,15 @@ router.route('/user/:name/match')
                     utils.handleMongooError(err, res);
                     return;
                 }
+                // add distance
+                matchedUsers = matchedUsers.map((item) => {
+                    item._doc.distance = geoLib.getDistance(
+                        {latitude: user.location[1], longitude: user.location[0]},
+                        {latitude: item.location[1], longitude: item.location[0]}
+                        );
+
+                    return item;
+                })
                 res.status(200).json(matchedUsers);
             });
         })

@@ -15,9 +15,22 @@ const UserSchema = new Schema({
         required: true,
         unique: true
     },
-    linkedinUrl: {
+    headline: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    pictureUrl: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    profileUrl: {
         type: String,
         required: true
+    },
+    numConnections: {
+        type: Number
     },
     location: {type: [Number], index: '2d'}
 });
