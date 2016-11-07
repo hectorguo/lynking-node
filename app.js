@@ -31,6 +31,9 @@ const match = require('./routes/match');
 
 const corsConfig = {
   origin: function(origin, callback){
+    if(origin) {
+      origin = origin.replace(/:.+/, '');
+    }
     const originIsWhitelisted = !origin || conf.corsWhitelist.indexOf(origin) !== -1;
     callback(originIsWhitelisted ? null : 'Bad Request', originIsWhitelisted);
   }
