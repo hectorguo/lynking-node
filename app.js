@@ -34,7 +34,7 @@ const corsConfig = {
     if(origin) {
       origin = origin.replace(/:\d+/, ''); // ignore port
     }
-    const originIsWhitelisted = !origin || conf.corsWhitelist.indexOf(origin) !== -1;
+    const originIsWhitelisted = !origin || !!origin.match(/^chrome-extension:/) || conf.corsWhitelist.indexOf(origin) !== -1;
     callback(originIsWhitelisted ? null : 'Bad Request', originIsWhitelisted);
   }
 }
