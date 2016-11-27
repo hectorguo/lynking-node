@@ -14,15 +14,15 @@ Request Body:
 
 ```json
 {
-	"name": "hg",
+  "name": "hg",
   "linkedinId": "O68mBLPgcn",
   "firstName": "Haixu (Hector)",
   "lastName": "Guo",
   "formattedName": "Haixu (Hector) Guo",
-	"headline": "Engineer",
-	"numConnections": 117,
-	"pictureUrl": "http://ws3.sinaimg.cn/mw690/6d0af205gw1f96b1yp9dgj21h80u4gyt.jpg",
-	"profileUrl": "https://www.linkedin.com/in/hectorguo",
+  "headline": "Engineer",
+  "numConnections": 117,
+  "pictureUrl": "http://ws3.sinaimg.cn/mw690/6d0af205gw1f96b1yp9dgj21h80u4gyt.jpg",
+  "profileUrl": "https://www.linkedin.com/in/hectorguo",
   "emailAddress": "hectorguo@live.com",
   "industry": "Internet"
 }
@@ -52,11 +52,11 @@ Response Body:
 ```json
 {
   "_id": "581e4d325dbf62155bbddd89",
-	"name": "hg",
-	"headline": "Engineer",
-	"numConnections": 117,
-	"pictureUrl": "http://ws3.sinaimg.cn/mw690/6d0af205gw1f96b1yp9dgj21h80u4gyt.jpg",
-	"profileUrl": "https://www.linkedin.com/in/hectorguo",
+  "name": "hg",
+  "headline": "Engineer",
+  "numConnections": 117,
+  "pictureUrl": "http://ws3.sinaimg.cn/mw690/6d0af205gw1f96b1yp9dgj21h80u4gyt.jpg",
+  "profileUrl": "https://www.linkedin.com/in/hectorguo",
     "location": [
         -122.0657768,
         37.3890879
