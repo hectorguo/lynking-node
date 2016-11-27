@@ -15,14 +15,21 @@ Request Body:
 ```json
 {
 	"name": "hg",
+  "linkedinId": "O68mBLPgcn",
+  "firstName": "Haixu (Hector)",
+  "lastName": "Guo",
+  "formattedName": "Haixu (Hector) Guo",
 	"headline": "Engineer",
 	"numConnections": 117,
 	"pictureUrl": "http://ws3.sinaimg.cn/mw690/6d0af205gw1f96b1yp9dgj21h80u4gyt.jpg",
-	"profileUrl": "https://www.linkedin.com/in/hectorguo"
+	"profileUrl": "https://www.linkedin.com/in/hectorguo",
+  "emailAddress": "hectorguo@live.com",
+  "headline": "Front-end Engineer",
+  "industry": "Internet"
 }
 ```
 
-### Create User's Location
+### Add User's Location
 ```
 POST /api/user/{:name}/location
 ```
@@ -38,14 +45,14 @@ Request Body:
 
 ### Query User
 ```
-GET /api/user/{:name}}
+GET /api/user/{:name}
 ```
 
 Response Body:
 
 ```json
 {
-    "_id": "581e4d325dbf62155bbddd89",
+  "_id": "581e4d325dbf62155bbddd89",
 	"name": "hg",
 	"headline": "Engineer",
 	"numConnections": 117,
@@ -61,7 +68,7 @@ Response Body:
 ### Query Matched List
 
 ```
-GET /api/user/{:name}/match?distance={:meters}
+GET /api/user/{:name}/match?distance={:meters}&industry=Internet
 ```
 
 Response Body:
@@ -77,6 +84,7 @@ Response Body:
     "pictureUrl": "",
     "profileUrl": "https://www.linkedin.com/in/aroshi-handa",
     "__v": 1,
+    "industry": "Internet",
     "location": [
       -122.062627,
       37.389749
@@ -90,6 +98,7 @@ Response Body:
     "pictureUrl": "",
     "profileUrl": "https://www.linkedin.com/in/shreymalhotra",
     "__v": 1,
+    "industry": "Internet",
     "location": [
       -122.063653,
       37.392284
@@ -97,6 +106,5 @@ Response Body:
   }
 ]
 ```
-
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/810f55372c0f77b4a64e)
