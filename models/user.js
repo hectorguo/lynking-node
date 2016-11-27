@@ -15,10 +15,27 @@ const UserSchema = new Schema({
         required: true,
         unique: true
     },
-    headline: {
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
+        type: String,
+        required: true
+    },
+    formattedName: {
         type: String,
         required: true,
         unique: true
+    },
+    linkedinId: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    headline: {
+        type: String,
+        required: true
     },
     pictureUrl: {
         type: String,
@@ -29,8 +46,14 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    emailAddress: {
+        type: String
+    },
     numConnections: {
         type: Number
+    },
+    industry: {
+        type: String
     },
     location: {type: [Number], index: '2d'}
 });

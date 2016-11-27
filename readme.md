@@ -74,37 +74,44 @@ GET /api/user/{:name}/match?distance={:meters}&industry=Internet
 Response Body:
 
 ```json
-[
-  {
-    "distance": 288,
-    "_id": "581e85ebd77536215ec8b5d7",
-    "name": "B",
-    "headline": "Masters Student at Carnegie Mellon University",
-    "numConnections": 266,
-    "pictureUrl": "",
-    "profileUrl": "https://www.linkedin.com/in/aroshi-handa",
-    "__v": 1,
-    "industry": "Internet",
-    "location": [
-      -122.062627,
-      37.389749
-    ]
-  },{
-    "distance": 401,
-    "_id": "581e85f7d77536215ec8b5d8",
-    "name": "A",
-    "headline": "Master's Student at Carnegie Mellon University",
-    "numConnections": 564,
-    "pictureUrl": "",
-    "profileUrl": "https://www.linkedin.com/in/shreymalhotra",
-    "__v": 1,
-    "industry": "Internet",
-    "location": [
-      -122.063653,
-      37.392284
-    ]
-  }
-]
+{
+  "users": [
+    {
+      "distance": 0,
+      "_id": "583b6c108741bd262f27fb18",
+      "name": "hg",
+      "linkedinId": "O68mBLPgcn",
+      "firstName": "Haixu (Hector)",
+      "lastName": "Guo",
+      "formattedName": "Haixu (Hector) Guo",
+      "numConnections": 117,
+      "pictureUrl": "http://ws3.sinaimg.cn/mw690/6d0af205gw1f96b1yp9dgj21h80u4gyt.jpg",
+      "profileUrl": "https://www.linkedin.com/in/hectorguo",
+      "emailAddress": "hectorguo@live.com",
+      "headline": "Engineer",
+      "industry": "Internet",
+      "__v": 1,
+      "location": [
+        -122.0657768,
+        37.3890879
+      ]
+    },
+    {
+      "distance": 288,
+      "_id": "581e85ebd77536215ec8b5d7",
+      "name": "Aroshi Handa",
+      "headline": "Masters Student at Carnegie Mellon University",
+      "numConnections": 266,
+      "pictureUrl": "https://media.licdn.com/media/AAEAAQAAAAAAAAlmAAAAJDdlYTk3MzRiLTdmNGYtNGU3YS1iYWQ3LTM1NWVkMWMyNWUwNA.jpg",
+      "profileUrl": "https://www.linkedin.com/in/aroshi-handa",
+      "__v": 1,
+      "location": [
+        -122.062627,
+        37.389749
+      ]
+    }
+  ]
+}
 ```
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/810f55372c0f77b4a64e)

@@ -56,8 +56,8 @@ router.route('/user/:name/match')
                         );
 
                     return item;
-                })
-                res.status(200).json(matchedUsers);
+                });
+                res.status(200).json({users: matchedUsers});
             });
         })
     });
