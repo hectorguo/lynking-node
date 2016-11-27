@@ -24,7 +24,6 @@ Request Body:
 	"pictureUrl": "http://ws3.sinaimg.cn/mw690/6d0af205gw1f96b1yp9dgj21h80u4gyt.jpg",
 	"profileUrl": "https://www.linkedin.com/in/hectorguo",
   "emailAddress": "hectorguo@live.com",
-  "headline": "Front-end Engineer",
   "industry": "Internet"
 }
 ```
