@@ -38,10 +38,10 @@ router.route('/user')
             });
     });
 
-router.route('/user/:name')
+router.route('/user/:linkedinId')
     .get((req, res) => {
         userHandle.model.findOne({
-            name: req.params.name
+            linkedinId: req.params.linkedinId
         }, (err, user) => {
             if(err) {
                 utils.handleMongooError(err, res);

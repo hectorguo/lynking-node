@@ -18,13 +18,13 @@ const ModelHandle = require('./factory');
 const userHandle = new ModelHandle(User, 'User');
 
 // save and get user info
-router.route('/user/:name/match')
+router.route('/user/:linkedinId/match')
     .get((req, res) => {
         const limitCount = req.query.count && req.query.count < 20 ? req.query.count : 20;
         const maxDistance = req.query.distance ? req.query.distance : 1000; // unit meters
 
         User
-        .findOne({ name: req.params.name })
+        .findOne({ linkedinId: req.params.linkedinId })
         .exec((err, user) => {
             if(err) {
                 utils.handleMongooError(err, res);
@@ -39,7 +39,7 @@ router.route('/user/:name/match')
             User
             .find({
                 location: {$near: user.location, $maxDistance: maxDistance/1000/111.12}, // distance 1km square
-                name: {$ne: user.name}
+                linkedinId: {$ne: user.linkedinId}
             })
             // .findNearby()
             .limit(limitCount)
@@ -62,10 +62,10 @@ router.route('/user/:name/match')
         })
     });
 
-router.route('/user/:name')
+router.route('/user/:linkedinId')
     .get((req, res) => {
         userHandle.model.findOne({
-            name: req.params.name
+            linkedinId: req.params.linkedinId
         }, (err, user) => {
             if(err) {
                 utils.handleMongooError(err, res);

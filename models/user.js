@@ -10,11 +10,6 @@ const UserSchema = new Schema({
     //     unique: true
     // },
     // linkedin user name
-    name: {
-        type: String,
-        required: true,
-        unique: true
-    },
     firstName: {
         type: String,
         required: true
@@ -24,9 +19,7 @@ const UserSchema = new Schema({
         required: true
     },
     formattedName: {
-        type: String,
-        required: true,
-        unique: true
+        type: String
     },
     linkedinId: {
         type: String,
@@ -34,13 +27,10 @@ const UserSchema = new Schema({
         unique: true
     },
     headline: {
-        type: String,
-        required: true
+        type: String
     },
     pictureUrl: {
-        type: String,
-        required: true,
-        unique: true
+        type: String
     },
     profileUrl: {
         type: String,

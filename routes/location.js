@@ -18,10 +18,10 @@ const ModelHandle = require('./factory');
 const locationHandle = new ModelHandle(Location, 'Location');
 
 // save and get location info
-router.route('/user/:name/location')
+router.route('/user/:linkedinId/location')
     .post((req, res) => {
         User.findOne({
-            name: req.params.name
+            linkedinId: req.params.linkedinId
         }, (err, user) => {
             if(user) {
                 const coord = [req.body.lng, req.body.lat];
@@ -56,7 +56,7 @@ router.route('/user/:name/location')
     // test api
     .get((req, res) => {
         User
-        .findOne({ name: req.params.name })
+        .findOne({ linkedinId: req.params.linkedinId })
         .exec(function (err, user) {
             if (err) {
                 return utils.handleMongooError(err, res);
