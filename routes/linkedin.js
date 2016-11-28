@@ -66,6 +66,7 @@ function getProfile(token) {
     'headline',
     'picture-urls::(original)',
     'industry',
+    'summary',
     'public-profile-url'
   ];
   const profileURL = `https://api.linkedin.com/v1/people/~:(${params.join(',')})?format=json`;
