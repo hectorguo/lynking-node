@@ -113,7 +113,8 @@ router.route('/profile')
         "pictureUrl": profile.pictureUrls ? profile.pictureUrls.values[0] : '',
         "profileUrl": profile.publicProfileUrl,
         "emailAddress": profile.emailAddress,
-        "industry": profile.industry
+        "industry": profile.industry,
+        "summary": profile.summary
       }
 
       // if user found, just return user. 
@@ -125,7 +126,7 @@ router.route('/profile')
           res.status(200).json(user);
           return;
         }
-        
+
         userHandle.create(userParams)
         .then((user) => {
           res.status(201).json(user);

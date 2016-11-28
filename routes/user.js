@@ -54,6 +54,18 @@ router.route('/user/:linkedinId')
             }
             res.status(200).json(user);
         });
-    });
+    })
+    .delete((req, res) => {
+        userHandle.model.remove({linkedinId: req.params.linkedinId},
+        (err, item) => {
+            if(err) {
+                utils.handleMongooError(err, res);
+                return;
+            }
+            res.status(200).json({
+                message: `${req.params.linkedinId} has been removed`
+            });
+        });
+    })
 
 module.exports = router;

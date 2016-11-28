@@ -45,6 +45,9 @@ const UserSchema = new Schema({
     industry: {
         type: String
     },
+    summary: {
+        type: String
+    },
     location: {type: [Number], index: '2d'}
 });
 
