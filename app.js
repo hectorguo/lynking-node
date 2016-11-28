@@ -23,7 +23,7 @@ const router = express.Router();              // get an instance of the express 
 
 const utils = require('./utils');
 
-const session = require('./routes/session');
+const linkedin = require('./routes/linkedin');
 const user = require('./routes/user');
 const location = require('./routes/location');
 const match = require('./routes/match');
@@ -55,8 +55,9 @@ app.use(function(req, res, next) {
 app.use('/api', user);
 app.use('/api', location);
 app.use('/api', match);
-// setup and sessions router do not need to verify token
-// app.use('/api', session);
+
+// combing linkedin APIs
+app.use('/api/linkedin', linkedin);
 
 // Authentication
 // app.use((req, res, next) => {

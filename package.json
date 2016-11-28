@@ -29,6 +29,7 @@
     "geolib": "^2.0.22",
     "jsonwebtoken": "^7.1.9",
     "mongoose": "^4.6.5",
-    "mongoose-hidden": "^0.6.4"
+    "mongoose-hidden": "^0.6.4",
+    "node-fetch": "^1.6.3"
   }
 }

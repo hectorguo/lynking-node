@@ -31,7 +31,7 @@ router.route('/user')
     .get((req, res) => {
         userHandle.get()
             .then((users) => {
-                res.status(200).json(users);
+                res.status(200).json({users: users});
             })
             .catch((err) => {
                 utils.handleMongooError(err, res);
