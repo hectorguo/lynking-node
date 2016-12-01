@@ -1,10 +1,20 @@
 Lynking
 ==========
 
-* TOC
-{:toc}
-
 ![Cover](http://ws3.sinaimg.cn/mw690/6d0af205gw1f96b1yp9dgj21h80u4gyt.jpg)
+
+<!-- TOC -->
+
+- [APIs](#apis)
+    - [Create User](#create-user)
+    - [Add User's Location](#add-users-location)
+    - [Query User](#query-user)
+    - [Query Matched List](#query-matched-list)
+    - [Send friend request](#send-friend-request)
+    - [Accept or deny request from sender](#accept-or-deny-request-from-sender)
+    - [Get all friends' requests (sent and received)](#get-all-friends-requests-sent-and-received)
+
+<!-- /TOC -->
 
 ## APIs
 
