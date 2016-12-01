@@ -1,15 +1,9 @@
 'use strict';
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const mongooseHidden = require('mongoose-hidden')({ defaultHidden: { password: true, __v: true } });
+const friendsOfFriends = require('friends-of-friends')(mongoose);
 
 const UserSchema = new Schema({
-    // token: {
-    //     type: String,
-    //     required: true,
-    //     unique: true
-    // },
-    // linkedin user name
     firstName: {
         type: String,
         required: true
@@ -49,6 +43,12 @@ const UserSchema = new Schema({
         type: String
     },
     location: {type: [Number], index: '2d'}
+});
+
+UserSchema.plugin(friendsOfFriends.plugin, { 
+    personModelName:            'User',
+    friendshipModelName:        'Friendship', 
+    friendshipCollectionName:   'userRelationships',
 });
 
 // define a method to find the nearby person
