@@ -3,6 +3,8 @@
 const express = require('express');        // call express
 const app = express();                 // define our app using express
 const bodyParser = require('body-parser');
+const server = require('http').Server(app);
+const io = require('socket.io')(server); // websocket, notification pusher
 
 const cors = require('cors')
 const mongoose = require('mongoose');
@@ -27,6 +29,7 @@ const linkedin = require('./routes/linkedin');
 const user = require('./routes/user');
 const location = require('./routes/location');
 const match = require('./routes/match');
+const friend = require('./routes/friend')(io); // integrate with socket.io
 
 
 const corsConfig = {
@@ -55,10 +58,16 @@ app.use(function(req, res, next) {
 app.use('/api', user);
 app.use('/api', location);
 app.use('/api', match);
+app.use('/api', friend);
 
 // combing linkedin APIs
 app.use('/api/linkedin', linkedin);
 
+// io.on('connection', function (socket) {
+//   socket.on('client notification', (res) => {
+//     console.log(res);
+//   });
+// });
 // Authentication
 // app.use((req, res, next) => {
 //     const token = req.body.token || req.query.token || req.headers['x-access-token'];
