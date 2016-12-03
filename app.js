@@ -9,7 +9,7 @@ const io = require('socket.io')(server); // websocket, notification pusher
 const cors = require('cors')
 const mongoose = require('mongoose');
 const conf = require('./config');
-const port = process.env.PORT || 8080;        // set our port
+const port = process.env.PORT || 80;        // set our port
 const MONGO_URL = conf.database;
 
 // configure app to use bodyParser()
