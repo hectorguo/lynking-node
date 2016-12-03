@@ -13,6 +13,10 @@ Lynking
     - [Send friend request](#send-friend-request)
     - [Accept or deny request from sender](#accept-or-deny-request-from-sender)
     - [Get all friends' requests (sent and received)](#get-all-friends-requests-sent-and-received)
+- [Notifications](#notifications)
+    - [Subscribe request notifications](#subscribe-request-notifications)
+        - [Web client side](#web-client-side)
+        - [Android client side](#android-client-side)
 
 <!-- /TOC -->
 
@@ -303,4 +307,30 @@ GET /api/user/{:linkedinId}/friends/requests
 }
 ```
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/810f55372c0f77b4a64e)
+[![Run APIs above in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/810f55372c0f77b4a64e)
+
+## Notifications
+
+### Subscribe request notifications
+
+#### Web client side
+
+```html
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io('https://4113studio.com');
+  socket.on('notifications', function (data) {
+    console.log(data);
+    // {
+    //   sender: '-AXeEda4CL',  // linkedinId
+    //   receiver: 'NiMjtTCXCQ', // linkedinId
+    //   type: 'friendRequest'  // 'friendRequest', 'acceptRequest' or 'denyRequest'
+    // }
+    socket.emit('client notification', { my: 'data' });
+  });
+</script>
+```
+
+#### Android client side
+
+See this: [http://socket.io/blog/native-socket-io-and-android/](http://socket.io/blog/native-socket-io-and-android/)
