@@ -3,13 +3,14 @@
 const express = require('express');        // call express
 const app = express();                 // define our app using express
 const bodyParser = require('body-parser');
-const server = require('http').Server(app);
-const io = require('socket.io')(server); // websocket, notification pusher
+const server = require('http').createServer(app);
+
+const io = require('socket.io').listen(server); // websocket, notification pusher
 
 const cors = require('cors')
 const mongoose = require('mongoose');
 const conf = require('./config');
-const port = process.env.PORT || 80;        // set our port
+const port = process.env.NODE_ENV === 'dev' ? 8080 : 80;        // set our port
 const MONGO_URL = conf.database;
 
 // configure app to use bodyParser()
@@ -63,11 +64,12 @@ app.use('/api', friend);
 // combing linkedin APIs
 app.use('/api/linkedin', linkedin);
 
-// io.on('connection', function (socket) {
-//   socket.on('client notification', (res) => {
-//     console.log(res);
-//   });
-// });
+io.on('connection', function (socket) {
+  socket.on('client notification', (res) => {
+    console.log(res);
+  });
+  // socket.emit('notifications', {a:112})
+});
 // Authentication
 // app.use((req, res, next) => {
 //     const token = req.body.token || req.query.token || req.headers['x-access-token'];
@@ -100,7 +102,7 @@ app.use((req, res, next) => {
 
 // START THE SERVER
 // =============================================================================
-app.listen(port);
+server.listen(port);
 console.log('Service running on port ' + port);
 
 module.exports = app;

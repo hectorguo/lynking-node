@@ -4,6 +4,8 @@
   "description": "server side for lynking app",
   "main": "app.js",
   "scripts": {
+    "prod": "node app.js",
+    "dev": "NODE_ENV=dev node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
