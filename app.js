@@ -10,7 +10,7 @@ const io = require('socket.io').listen(server); // websocket, notification pushe
 const cors = require('cors')
 const mongoose = require('mongoose');
 const conf = require('./config');
-const port = process.env.NODE_ENV === 'dev' ? 8080 : 80;        // set our port
+const port = process.env.NODE_ENV === 'dev' ? 8080 : 8080;        // set our port
 const MONGO_URL = conf.database;
 
 // configure app to use bodyParser()
@@ -29,6 +29,7 @@ const utils = require('./utils');
 const linkedin = require('./routes/linkedin');
 const user = require('./routes/user');
 const location = require('./routes/location');
+const chatToken = require('./routes/chatToken');
 const match = require('./routes/match');
 const friend = require('./routes/friend')(io); // integrate with socket.io
 
@@ -58,6 +59,7 @@ app.use(function(req, res, next) {
 
 app.use('/api', user);
 app.use('/api', location);
+app.use('/api', chatToken);
 app.use('/api', match);
 app.use('/api', friend);
 
