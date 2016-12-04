@@ -319,14 +319,15 @@ GET /api/user/{:linkedinId}/friends/requests
 <script src="/socket.io/socket.io.js"></script>
 <script>
   var socket = io('https://4113studio.com');
-  socket.on('notifications', function (data) {
+  socket.on('notification', function (data) {
     console.log(data);
     // {
     //   sender: '-AXeEda4CL',  // linkedinId
     //   receiver: 'NiMjtTCXCQ', // linkedinId
-    //   type: 'friendRequest'  // 'friendRequest', 'acceptRequest' or 'denyRequest'
+    //   type: 'friendRequest'  // request source: 'friendRequest', 'acceptRequest' or 'denyRequest'
     // }
-    socket.emit('client notification', { my: 'data' });
+    
+    socket.emit('client notification', { my: 'data' }); // send message to server
   });
 </script>
 ```
