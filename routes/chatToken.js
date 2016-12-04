@@ -41,13 +41,13 @@ router.route('/user/:linkedinId/chatToken')
                     linkedinId:req.params.linkedinId 
                 };
                 console.log(chatOpts)
-                //Create Chat Token
+                //Create Only one Chat Token
                 admin.auth().createCustomToken(chatOpts.linkedinId)
                   .then(function(customToken) {
                         chatOpts.chatToken = customToken;
                         console.log(chatOpts);
-                        
-                        ChatToken.find({linkedinId:req.params.linkedinId}).remove({}).then((err,res)=>{
+                        //Delete old tokens
+                        ChatToken.find({linkedinId:req.params.linkedinId}).remove({},(err)=>{
                             ChatTokenHandle.create(chatOpts)
                                 .then((obj) => {
                                     res.status(201).json({chatToken:obj});
