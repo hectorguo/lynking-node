@@ -10,7 +10,8 @@ const io = require('socket.io').listen(server); // websocket, notification pushe
 const cors = require('cors')
 const mongoose = require('mongoose');
 const conf = require('./config');
-const port = process.env.NODE_ENV === 'dev' ? 8080 : 8080;        // set our port
+const devPort = process.env.PORT || 8080;
+const port = process.env.NODE_ENV === 'dev' ? devPort : 80;        // set our port (80 is the only port for production, used for redirecting to https automatically)
 const MONGO_URL = conf.database;
 
 // configure app to use bodyParser()
