@@ -44,7 +44,7 @@ module.exports = function(io) {
             utils.handleMongooError(err, res);
             return;
           }
-          res.status(201).json(friends);
+          res.status(201).json({friends});
         });
       });
     });

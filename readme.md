@@ -13,6 +13,7 @@ Lynking
     - [Send friend request](#send-friend-request)
     - [Accept or deny request from sender](#accept-or-deny-request-from-sender)
     - [Get all friends' requests (sent and received)](#get-all-friends-requests-sent-and-received)
+    - [Get friends (who have accepted request)](#get-friends-who-have-accepted-request)
 - [Notifications](#notifications)
     - [Subscribe request notifications](#subscribe-request-notifications)
         - [Web client side](#web-client-side)
@@ -302,6 +303,38 @@ GET /api/user/{:linkedinId}/friends/requests
       "__v": 0,
       "dateSent": "2016-12-01T08:52:28.412Z",
       "status": "Pending"
+    }
+  ]
+}
+```
+
+### Get friends (who have accepted request)
+
+```
+GET /api/user/:linkedinId/friends
+```
+
+```json
+{
+  "friends": [
+    {
+      "_id": "583bfd7cc7f3c011808d21ee",
+      "emailAddress": "shreks7@gmail.com",
+      "firstName": "Shrey",
+      "formattedName": "Shrey Malhotra",
+      "headline": "Master's Student at Carnegie Mellon University",
+      "industry": "Computer Software",
+      "lastName": "Malhotra",
+      "linkedinId": "LRYv4JCUeo",
+      "numConnections": 500,
+      "pictureUrl": "https://media.licdn.com/mpr/mprx/0_1js6_1Awg0ugyNqZL7bkcUpe7x8gDsqOQBbk9DgSg-DjDnZYQRQ3LU8IaKSqdnZBKBbkNw3mgLuZYw5q3nIWNHTDoLu4YwWgLnIX31gSx0jAYp4qL-RLw36D3f",
+      "profileUrl": "https://www.linkedin.com/in/shreymalhotra",
+      "summary": "I use my perseverance and motivation to energize the team to deliver perfection & achieve the vision.\n\nMaster's student aiming to build innovative products by maximizing\napplication knowledge, professional excellence and design expertise.\n\nLanguages & Frameworks : Angular3, VueJS, Express, MongoDB , NodeJS, Electron, TypeScript ECMAScript 6, JQuery, Java SE & EE, C, C++, Spring MVC, HTML5 CSS3, SQL, C#, PHP, Python, Django. Design :  Adobe Photoshop, Illustrator, After Effects Autodesk 3ds Max, M\nGame Development Skills: Unity VR, Kinect SDK, Unreal Engine, Unity 3d.\n\nSpecialties: \nDigital Strategist\nUI/ UX Designer\nAndroid Developer\nWeb Developer & Administrator\nGame Designer",
+      "__v": 74,
+      "location": [
+        -122.0707008,
+        37.3991423
+      ]
     }
   ]
 }
