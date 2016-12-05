@@ -21,7 +21,7 @@ const userHandle = new ModelHandle(User, 'User');
  * 
  * @param {Object} io  socket.io instance
  */
-module.exports = function(io) {
+module.exports = function() {
   // Get friends
   router.route('/user/:linkedinId/friends')
     .get((req, res) => {
@@ -80,11 +80,11 @@ module.exports = function(io) {
             return;
           }
           res.status(201).json(requestRes);
-          io.sockets.emit('notification', {
-            sender: senderLinkId,
-            receiver: receiverLinkId,
-            type: 'friendRequest'
-          });
+          // io.sockets.emit('notification', {
+          //   sender: senderLinkId,
+          //   receiver: receiverLinkId,
+          //   type: 'friendRequest'
+          // });
         });
       });
     })
@@ -118,11 +118,11 @@ module.exports = function(io) {
               return;
             }
             res.status(200).json(denied);
-            io.sockets.emit('notification', {
-              sender: senderLinkId,
-              receiver: receiverLinkId,
-              type: 'denyRequest'
-            });
+            // io.sockets.emit('notification', {
+            //   sender: senderLinkId,
+            //   receiver: receiverLinkId,
+            //   type: 'denyRequest'
+            // });
           });
         } else {
           sender.acceptRequest(receiver._id, (err, friendship) => {
@@ -131,11 +131,11 @@ module.exports = function(io) {
               return;
             }
             res.status(200).json(friendship);
-            io.sockets.emit('notification', {
-              sender: senderLinkId,
-              receiver: receiverLinkId,
-              type: 'acceptRequest'
-            });
+            // io.sockets.emit('notification', {
+            //   sender: senderLinkId,
+            //   receiver: receiverLinkId,
+            //   type: 'acceptRequest'
+            // });
           });
         }
       });

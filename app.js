@@ -5,13 +5,11 @@ const app = express();                 // define our app using express
 const bodyParser = require('body-parser');
 const server = require('http').createServer(app);
 
-const io = require('socket.io').listen(server); // websocket, notification pusher
 
 const cors = require('cors')
 const mongoose = require('mongoose');
 const conf = require('./config');
-const devPort = process.env.PORT || 8080;
-const port = process.env.NODE_ENV === 'development' ? devPort : 80;        // set our port (80 is the only port for production, used for redirecting to https automatically)
+const port = process.env.PORT || 8080;       // set our port (80 is the only port for production, used for redirecting to https automatically)
 const MONGO_URL = conf.database;
 
 // configure app to use bodyParser()
@@ -32,7 +30,7 @@ const user = require('./routes/user');
 const location = require('./routes/location');
 const chatToken = require('./routes/chatToken');
 const match = require('./routes/match');
-const friend = require('./routes/friend')(io); // integrate with socket.io
+const friend = require('./routes/friend'); // integrate with socket.io
 
 
 const corsConfig = {
@@ -67,12 +65,12 @@ app.use('/api', friend);
 // combing linkedin APIs
 app.use('/api/linkedin', linkedin);
 
-io.on('connection', function (socket) {
-  socket.on('client notification', (res) => {
-    console.log(res);
-  });
-  // socket.emit('notifications', {a:112})
-});
+// io.on('connection', function (socket) {
+//   socket.on('client notification', (res) => {
+//     console.log(res);
+//   });
+//   // socket.emit('notifications', {a:112})
+// });
 // Authentication
 // app.use((req, res, next) => {
 //     const token = req.body.token || req.query.token || req.headers['x-access-token'];
