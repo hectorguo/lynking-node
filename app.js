@@ -11,7 +11,7 @@ const cors = require('cors')
 const mongoose = require('mongoose');
 const conf = require('./config');
 const devPort = process.env.PORT || 8080;
-const port = process.env.NODE_ENV === 'dev' ? devPort : 80;        // set our port (80 is the only port for production, used for redirecting to https automatically)
+const port = process.env.NODE_ENV === 'development' ? devPort : 80;        // set our port (80 is the only port for production, used for redirecting to https automatically)
 const MONGO_URL = conf.database;
 
 // configure app to use bodyParser()

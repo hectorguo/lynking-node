@@ -1,5 +1,5 @@
 /** 
- * Express Route: /location
+ * Express Route: /user
  * @author Hector Guo
  * @version 0.0.3
  */
@@ -17,7 +17,7 @@ const ModelHandle = require('./factory');
 const ChatTokenHandle = new ModelHandle(ChatToken, 'ChatToken');
 
 //Firebase 
-var admin = require("firebase-admin");
+const admin = require("firebase-admin");
 admin.initializeApp({
    credential: admin.credential.cert({
     projectId: "lynking-33fb0",
@@ -74,7 +74,7 @@ router.route('/user/:linkedinId/chatToken')
             if (err) {
                 return utils.handleMongooError(err, res);
             }
-            // get location by _id
+            
             ChatToken
             .find({ _user: user._id })
             .exec((err, obj) => {
