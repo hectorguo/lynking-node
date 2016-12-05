@@ -45,12 +45,12 @@ router.route('/user/:linkedinId/chatToken')
                 admin.auth().createCustomToken(chatOpts.linkedinId)
                   .then(function(customToken) {
                         chatOpts.chatToken = customToken;
-                        console.log(chatOpts);
+                        //console.log(chatOpts);
                         //Delete old tokens
                         ChatToken.find({linkedinId:req.params.linkedinId}).remove({},(err)=>{
                             ChatTokenHandle.create(chatOpts)
                                 .then((obj) => {
-                                    res.status(201).json({chatToken:obj});
+                                    res.status(201).json(obj);
                                 })
                                 .catch((err) => {
                                     utils.handleMongooError(err, res);
@@ -76,7 +76,7 @@ router.route('/user/:linkedinId/chatToken')
             }
             // get location by _id
             ChatToken
-            .find({ _user: user._id })
+            .findOne({ _user: user._id })
             .exec((err, obj) => {
                 if (err) {
                     return utils.handleMongooError(err, res);
@@ -84,7 +84,7 @@ router.route('/user/:linkedinId/chatToken')
                 if(obj.length<1)
                     utils.reportError(400, 1001, 'Chat token not found', res);
                 else
-                    res.status(200).json({chatToken:obj});
+                    res.status(200).json(obj);
             });
         });
     });
